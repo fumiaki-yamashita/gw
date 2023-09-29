@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="wiewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS読込 -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/user/signup.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap,min.js}" defer></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<title>チャット一覧画面</title>
+</head>
+<body class="bg-light bg-gradient">
+	<form id="signup-form" method="post" th:action="@{/chatListDisp}" class=form-signup>
+		<h1 class="text-center">チャット一覧</h1>
+		<!--<input th:text="${userinfo.userid}" class="form-control"> -->
+		<table>
+            <tr th:each="userlist : ${userInfo}" th:object="${userLoginRequest}">
+                <td th:text="${userlist.nicname}"></td>
+            </tr>
+        </table>
+        <!-- チャットグループが存在すれば表示　　　-->
+        <table>
+            <tr th:each="userlist : ${userInfo}" th:object="${userLoginRequest}">
+                <td th:text="${userlist.nicname}"></td>
+            </tr>
+        </table>
+<a th:href="@{/}">戻る</a><br><a th:href="@{/chatroom}">チャットルームへ</a>
+	</form>
+</body>
+</html>

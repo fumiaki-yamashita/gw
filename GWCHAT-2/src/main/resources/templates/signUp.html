@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="wiewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS読込 -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/user/signup.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap,min.js}" defer></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<title>ユーザー登録</title>
+</head>
+<body class="bg-light bg-gradient">
+	<form id="signup-form" class="form-signup"
+		 th:action="@{/create}" th:method="post" th:object="${userAddRequest}">
+		 
+		 <div th:if="${validationError}" th:each="error : ${validationError}">
+            <label class="text-danger" th:text="${error}"></label>
+        </div>
+		<!-- ユーザー名 -->
+		<div class=form-group>
+			<label for="userName">ニックネーム</label>
+			<input type="text" th:field="*{nicname}" class="form-control">
+		</div>
+		<!-- パスワード -->
+		<div class="form-group">
+			<label for="password">パスワード</label>
+			<input type="text" th:field="*{password}" class="form-control">
+		</div>
+		<!-- 再パスワード 　-->
+		<div class="form-group">
+			<label for="password">再パスワード</label>
+			<input type="text" th:field="*{repassword}" class="form-control">
+		</div>
+
+		<!-- アカウント画像 
+		<div class="form-group">
+			<label for="formFile" class="form-label">アカウントアイコン(任意)</label>
+  			<input  type="file" class="form-control" id="formFile">
+		</div>-->
+		<!-- 登録ボタン -->
+		<input type="submit" value="ユーザー登録" class="btn btn-primary w-100 mt-3"><br>
+		<a th:href="@{/}">戻る</a>
+	</form>
+</body>
+</html>
